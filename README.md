@@ -1,6 +1,13 @@
 # Internet Connection Monitor
+Este script de Python permite monitorear la conexión a Internet y recibir notificaciones a través de Telegram en caso de que la conexión se caiga o se restablezca.
 
-Este script de Python monitorea la conexión a Internet y envía notificaciones a través de Telegram cuando la conexión se cae y se restablece.
+## Características
+
+- Verifica la conexión a Internet utilizando el comando "ping".
+- Envía notificaciones a través de Telegram cuando la conexión se cae o se restablece.
+- Registra los eventos de caída y recuperación de la conexión en un archivo de registro.
+- Configurable para usar un bot de Telegram y un grupo de chat específico
+
 
 ## Requisitos
 
