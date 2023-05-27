@@ -14,4 +14,4 @@
 - Mejoras en el manejo de errores y notificaciones.
 
 ### Fixed
-- Correcciones menores y mejoras.
+- Correcciones menores y mejoras
