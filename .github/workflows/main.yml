@@ -25,7 +25,7 @@ jobs:
       - name: Install dependencies
         run: |
           if [[ "${{ env.valid_variables }}" == "true" ]]; then
-            ip install -r ${{ github.workspace }}/internet-connection-monitor/requirements.txt
+            pip install -r ${{ github.workspace }}/internet-connection-monitor/requirements.txt
           fi
 
       - name: Run tests
