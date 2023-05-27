@@ -22,6 +22,9 @@ jobs:
             exit 0
           fi
         shell: bash
+        
+      - name: Move to parent directory
+        run: cd ..
 
       - name: Print current directory
         run: |
