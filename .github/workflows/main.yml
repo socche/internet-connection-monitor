@@ -7,7 +7,12 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
+    
+    defaults:
+      run:
+        working-directory: /home/runner/work/internet-connection-monitor    
+    
 
     steps:
       - name: Verify variables
@@ -23,9 +28,6 @@ jobs:
           fi
         shell: bash
         
-      - name: Move to parent directory
-        run: cd /home/runner/work/internet-connection-monitor
-
       - name: Print current directory
         run: |
           pwd
