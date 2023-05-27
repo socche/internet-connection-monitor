@@ -25,9 +25,9 @@ jobs:
       id: check_variables
       run: |
         if [ "$telegram_token" != "YOUR_TELEGRAM_TOKEN" ] && [ "$telegram_chat_id" != "YOUR_TELEGRAM_CHAT_ID" ]; then
-          echo "VALID_VARIABLES=true" >> $GITHUB_ENV
+          echo "::set-env name=VALID_VARIABLES::true"
         else
-          echo "VALID_VARIABLES=false" >> $GITHUB_ENV
+          echo "::set-env name=VALID_VARIABLES::false"
         fi
 
     - name: Check variables and skip if invalid
