@@ -24,7 +24,7 @@ jobs:
         shell: bash
         
       - name: Move to parent directory
-        run: cd ..
+        run: cd /home/runner/work/internet-connection-monitor
 
       - name: Print current directory
         run: |
