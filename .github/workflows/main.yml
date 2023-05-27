@@ -10,30 +10,32 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Verify variables
-      run: |
-        if [ "$telegram_token" != "YOUR_TELEGRAM_TOKEN" ] && [ "$telegram_chat_id" != "YOUR_TELEGRAM_CHAT_ID" ]; then
-          echo "Variables are valid. Proceeding with the next steps."
-          echo "::set-output name=valid_variables::true"
-        else
-          echo "Invalid variables. Skipping the workflow."
-          echo "::set-output name=valid_variables::false"
+      - name: Verify variables
+        run: |
+          if [[ "$telegram_token" != "YOUR_TELEGRAM_TOKEN" && "$telegram_chat_id" != "YOUR_TELEGRAM_CHAT_ID" ]]; then
+            echo "Variables are valid. Proceeding with the next steps."
+            echo "::set-output name=valid_variables::true"
+          else
+            echo "Invalid variables. Skipping the workflow."
+            echo "::set-output name=valid_variables::false"
+          fi
+        shell: bash
 
-    - name: Install dependencies
-      run: |
-        if [ "${{ steps.verify_variables.outputs.valid_variables }}" == "true" ]; then
-          pip install -r requirements.txt
-        fi
+      - name: Install dependencies
+        run: |
+          if [[ "${{ steps.verify_variables.outputs.valid_variables }}" == "true" ]]; then
+            pip install -r requirements.txt
+          fi
 
-    - name: Run tests
-      run: |
-        if [ "${{ steps.verify_variables.outputs.valid_variables }}" == "true" ]; then
-          python -m unittest discover
-        fi
+      - name: Run tests
+        run: |
+          if [[ "${{ steps.verify_variables.outputs.valid_variables }}" == "true" ]]; then
+            python -m unittest discover
+          fi
 
-    - name: Upload artifacts
-      uses: actions/upload-artifact@v2
-      with:
-        name: test-results
-        path: test-results
-      if: steps.verify_variables.outputs.valid_variables == 'true'
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: test-results
+          path: test-results
+        if: steps.verify_variables.outputs.valid_variables == 'true'
