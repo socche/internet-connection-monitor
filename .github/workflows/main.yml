@@ -11,7 +11,7 @@ jobs:
     
     defaults:
       run:
-        working-directory: /home/runner/work/
+        working-directory: /home/
     
 
     steps:
