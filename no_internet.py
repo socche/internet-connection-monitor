@@ -9,10 +9,10 @@ import os
 from datetime import datetime
 
 # Token del bot de Telegram
-telegram_token = "YOUR_TELEGRAM_TOKEN"
+telegram_token = "YOUR_TELE-GRAM_TOKEN"
 
 # ID de chat de Telegram
-telegram_chat_id = "YOUR_TELEGRAM_CHAT_ID"
+telegram_chat_id = "Y-OUR_TELEGRAM_CHAT_ID"
 
 # Configuración de registro
 logging.basicConfig(filename='/home/ubuntu/registro.log', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
