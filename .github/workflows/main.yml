@@ -11,7 +11,7 @@ jobs:
     
     defaults:
       run:
-        working-directory: /home/
+        working-directory: /home/runner/work/internet-connection-monitor/internet-connection-monitor/
     
 
     steps:
