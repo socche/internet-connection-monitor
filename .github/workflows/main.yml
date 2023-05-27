@@ -21,6 +21,12 @@ jobs:
             echo "valid_variables=false" >> $GITHUB_ENV
           fi
         shell: bash
+        
+      - name: Print current directory
+        run: |
+           pwd
+           ls -al      
+        
 
       - name: Install dependencies
         run: |
