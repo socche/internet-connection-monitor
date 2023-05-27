@@ -19,20 +19,14 @@ jobs:
           else
             echo "Invalid variables. Skipping the workflow."
             echo "valid_variables=false" >> $GITHUB_ENV
+            exit 0
           fi
         shell: bash
-        
+
       - name: Print current directory
         run: |
-           pwd
-           ls -al      
-        
-
-      - name: Install dependencies
-        run: |
-          if [[ "${{ env.valid_variables }}" == "true" ]]; then
-            pip install -r requirements.txt
-          fi
+          pwd
+          ls -al
 
       - name: Run tests
         run: |
