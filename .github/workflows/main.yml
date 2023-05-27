@@ -11,25 +11,26 @@ jobs:
 
     steps:
       - name: Verify variables
+        id: verify_variables
         run: |
           if [[ "$telegram_token" != "YOUR_TELEGRAM_TOKEN" && "$telegram_chat_id" != "YOUR_TELEGRAM_CHAT_ID" ]]; then
             echo "Variables are valid. Proceeding with the next steps."
-            echo "::set-output name=valid_variables::true"
+            echo "valid_variables=true" >> $GITHUB_ENV
           else
             echo "Invalid variables. Skipping the workflow."
-            echo "::set-output name=valid_variables::false"
+            echo "valid_variables=false" >> $GITHUB_ENV
           fi
         shell: bash
 
       - name: Install dependencies
         run: |
-          if [[ "${{ steps.verify_variables.outputs.valid_variables }}" == "true" ]]; then
+          if [[ "${{ env.valid_variables }}" == "true" ]]; then
             pip install -r requirements.txt
           fi
 
       - name: Run tests
         run: |
-          if [[ "${{ steps.verify_variables.outputs.valid_variables }}" == "true" ]]; then
+          if [[ "${{ env.valid_variables }}" == "true" ]]; then
             python -m unittest discover
           fi
 
@@ -38,4 +39,4 @@ jobs:
         with:
           name: test-results
           path: test-results
-        if: steps.verify_variables.outputs.valid_variables == 'true'
+        if: env.valid_variables == 'true'
