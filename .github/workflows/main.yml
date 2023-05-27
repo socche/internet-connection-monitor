@@ -22,12 +22,6 @@ jobs:
           fi
         shell: bash
 
-      - name: Install dependencies
-        run: |
-          if [[ "${{ env.valid_variables }}" == "true" ]]; then
-            pip install -r requirements.txt
-          fi
-
       - name: Run tests
         run: |
           if [[ "${{ env.valid_variables }}" == "true" ]]; then
