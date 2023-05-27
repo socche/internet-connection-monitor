@@ -9,7 +9,7 @@ import os
 from datetime import datetime
 
 # Token del bot de Telegram
-telegram_token = "YOUR_TE-LEGRAM_TOKEN"
+telegram_token = "YOUR_TELEGRAM_TOKEN"
 
 # ID de chat de Telegram
 telegram_chat_id = "YOUR_TELEGRAM_CHAT_ID"
