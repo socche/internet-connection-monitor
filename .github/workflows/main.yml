@@ -13,6 +13,16 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2.4.2
 
+    - name: Verify variables
+      run: |
+        if [[ "$telegram_token" != "YOUR_TELEGRAM_TOKEN" && "$telegram_chat_id" != "YOUR_TELEGRAM_CHAT_ID" ]]; then
+          echo "Variables are valid. Proceeding with the next step."
+        else
+          echo "Invalid variables. Reverting changes and skipping the workflow execution."
+          git checkout .
+          exit 0
+        fi
+
     - name: Set up Python
       uses: actions/setup-python@v2.3.1
       with:
@@ -20,15 +30,6 @@ jobs:
 
     - name: Install dependencies
       run: pip install -r requirements.txt
-
-    - name: Verify variables
-      run: |
-        if [ "$telegram_token" != "YOUR_TELEGRAM_TOKEN" ] && [ "$telegram_chat_id" != "YOUR_TELEGRAM_CHAT_ID" ]; then
-          echo "Variables are valid. Proceeding with the next step."
-        else
-          echo "Invalid variables. Skipping the next step."
-          exit 0
-        fi
 
     - name: Run tests
       run: python -m unittest discover
